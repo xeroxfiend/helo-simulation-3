@@ -24,3 +24,10 @@ values (1, 'brian post', 'https://image.shutterstock.com/image-photo/large-beaut
 select * from helo_users;
 
 select * from posts;
+
+-- sample join
+
+select * from helo_users hu
+join posts p on hu.user_id = p.user_id;
+
+
