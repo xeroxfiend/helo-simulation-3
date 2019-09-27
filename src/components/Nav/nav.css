@@ -1,0 +1,30 @@
+.nav {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    width: 130px;
+    background: orange;
+    box-shadow: 3px 3px 7px rgb(161, 159, 159);
+}
+
+.user-image {
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    background: white;
+    margin: 30px 0 100px 0;
+}
+
+.buttons-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding: 20px;
+}
+
+.home-new-container {
+    display: flex;
+    flex-direction: column;
+}
