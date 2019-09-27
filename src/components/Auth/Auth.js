@@ -22,25 +22,37 @@ class Auth extends Component {
   }
 
   register() {
+    if (!this.state.username || !this.state.password)
+      return swal.fire("Username and Password cannot be blank");
+
     axios
       .post("/auth/register", {
         username: this.state.username,
         password: this.state.password
       })
       .then(res => {
-        console.log(res) 
+        this.props.updateState(
+          res.data.user.userId,
+          this.state.username,
+          `https://robohash.org/${this.state.username}?set=set5`
+        );
         this.props.history.push("/dashboard");
       });
   }
 
   async login() {
+    if (!this.state.username || !this.state.password)
+      return swal.fire("Username and Password cannot be blank");
+
     const res = await axios.post("/auth/login", {
       username: this.state.username,
       password: this.state.password
     });
-    console.log(res)
-
-    // this.props.updateState()
+    this.props.updateState(
+      res.data.user.userId,
+      this.state.username,
+      `https://robohash.org/${this.state.username}?set=set5`
+    );
 
     if (!res.data.user) return swal.fire(res.data.message);
     this.props.history.push("/dashboard");

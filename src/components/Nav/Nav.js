@@ -20,7 +20,8 @@ class Nav extends Component {
           <div className="empty"></div>
         ) : (
           <div className="nav">
-            <div className="user-image"></div>
+            <img className="user-image" src={this.props.pic} alt='user' />
+            <h3 className="username">{this.props.username}</h3>
             <div className="nav-buttons-container">
               <div className="home-new-container">
                 <Link to="/dashboard">
