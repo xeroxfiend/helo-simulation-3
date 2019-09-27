@@ -5,6 +5,7 @@ import {Link} from "react-router-dom";
 import home from '../../assets/home.png'
 import logout from '../../assets/logout.png'
 import newpost from '../../assets/newpost.png'
+import {connect} from 'react-redux'
 
 class Nav extends Component {
   constructor() {
@@ -40,4 +41,9 @@ class Nav extends Component {
   }
 }
 
-export default withRouter(Nav);
+function mapStateToProps(reduxState) {
+    const {username, pic} = reduxState
+    return {username, pic}
+}
+
+export default withRouter(connect(mapStateToProps)(Nav));

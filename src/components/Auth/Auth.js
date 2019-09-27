@@ -3,10 +3,12 @@ import "./auth.css";
 import logo from "../../assets/wink.png";
 import axios from "axios";
 import swal from "sweetalert2";
+import {connect} from "react-redux";
+import {updateState} from "../../ducks/reducer";
 
 class Auth extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       username: "",
       password: ""
@@ -25,7 +27,8 @@ class Auth extends Component {
         username: this.state.username,
         password: this.state.password
       })
-      .then(() => {
+      .then(res => {
+        console.log(res) 
         this.props.history.push("/dashboard");
       });
   }
@@ -35,6 +38,9 @@ class Auth extends Component {
       username: this.state.username,
       password: this.state.password
     });
+    console.log(res)
+
+    // this.props.updateState()
 
     if (!res.data.user) return swal.fire(res.data.message);
     this.props.history.push("/dashboard");
@@ -76,4 +82,7 @@ class Auth extends Component {
   }
 }
 
-export default Auth;
+export default connect(
+  null,
+  {updateState}
+)(Auth);
