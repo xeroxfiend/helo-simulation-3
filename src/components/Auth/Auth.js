@@ -11,17 +11,23 @@ class Auth extends Component {
     };
   }
 
+  handleChange(value, key) {
+      this.setState({
+          [key]: value
+      })
+  }
+
   render() {
     return (
       <div className="auth">
         <div className="auth-container">
           <div className="logo">
               <img src={logo} alt="" className="logo-image"/>
-              <h1>Helo</h1>
+              <h1 className='logo-text'>Helo</h1>
           </div>
           <div className="input-container">
-            <input placeholder='Username' className="username-input" type="text" />
-            <input placeholder='Password' className="password-input" type="password" />
+            <input onChange={e => this.handleChange(e.target.value, 'username')} placeholder='Username' className="username-input" type="text" />
+            <input onChange={e => this.handleChange(e.target.value, 'password')} placeholder='Password' className="password-input" type="password" />
           </div>
           <div className="login-buttons-container">
             <button className="login">Login</button>

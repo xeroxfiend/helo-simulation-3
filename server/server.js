@@ -22,10 +22,10 @@ app.use(
 )
 
 //endpoints
+app.post('/auth/register', ctrl.register)
 
 // app.get()
 
-// app.post()
 
 // app.put()
 

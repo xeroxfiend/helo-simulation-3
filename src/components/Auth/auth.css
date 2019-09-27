@@ -4,18 +4,19 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    background: rgb(100, 65, 1);
+    background: linear-gradient(100deg, #FF70A6, #FF9770, #FFD760, #E9FF70)
 }
 
 .auth-container {
     display: flex;
     flex-direction: column;
-    box-shadow: 3px 3px 7px black;
+    box-shadow: 1px 5px 10px #403D39;
     border-radius: 10px;
     min-width: 300px;
     width: 30%;
     height: 500px;
-    padding: 50px;
+    justify-content: center;
+    background: linear-gradient(100deg, #FF9770, #FFD760)
 }
 
 .logo {
@@ -29,6 +30,10 @@
     height: 150px;
 }
 
+.logo-text {
+    font-size: 5rem;
+}
+
 .input-container {
     display: flex;
     flex-direction: column;
@@ -36,15 +41,35 @@
 }
 
 
+/* 
 /* .username-input::before {
     content: 'Username:';
-}
+} */
 
-.password-input::before {
-    content: 'Password:';
+
+/* .password-input::before {
+    content: 'Password: ';
 } */
 
 .login-buttons-container {
     display: flex;
     justify-content: center;
+}
+
+.login {
+    border: none;
+    background: #403D39;
+    color: white;
+    margin-right: 30px;
+    height: 30px;
+    width: 75px;
+}
+
+.register {
+    border: none;
+    background: #403D39;
+    color: white;
+    margin-left: 30px;
+    height: 30px;
+    width: 75px;
 }
