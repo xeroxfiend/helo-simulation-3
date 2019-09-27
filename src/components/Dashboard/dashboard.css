@@ -2,9 +2,10 @@
     display: flex;
     height: 100%;
     width: 100%;
-    background: blue;
+    background: #F2F2F2;
     flex-direction: column;
     align-items: center;
+    padding: 30px;
 }
 
 .search-container {
@@ -12,6 +13,10 @@
     align-items: center;
     justify-content: space-between;
     width: 60%;
+    background: white;
+    box-shadow: 1px 1px 5px rgb(151, 150, 150);
+    padding: 0 20px 0 20px;
+    margin-bottom: 15px;
 }
 
 .input-and-buttons {
@@ -21,6 +26,7 @@
 
 .search-bar {
     height: 23px;
+    width: 30vw;
 }
 
 .search-button {
@@ -32,10 +38,28 @@
     background: #403D39;
     color: white;
     height: 23px;
-    width: 75px;
+    width: 50px;
 }
 
 .filter-container {
     display: flex;
     align-items: center;
+}
+
+.filter-text {
+    font-weight: 400;
+}
+
+.filter {
+    margin-top: 10px;
+}
+
+.posts-container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 60%;
+    background: white;
+    box-shadow: 1px 1px 5px rgb(151, 150, 150);
+    padding: 0 20px 0 20px;
 }

@@ -6,8 +6,19 @@ class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
-      search: ""
+      search: "",
+      filter: true
     };
+  }
+
+  handleChange(value) {
+      this.setState({
+          search: value
+      })
+  }
+
+  handleFilter(value) {
+      console.log(value)
   }
 
   render() {
@@ -15,15 +26,18 @@ class Dashboard extends Component {
       <div className="dashboard">
         <div className="search-container">
           <div className="input-and-buttons">
-            <input className="search-bar" type="text" />
+            <input onChange={e => this.handleChange(e.target.value)} placeholder='Search by Title' className="search-bar" type="text" />
             <img src={searchButton} alt="search" className="search-button" />
             <button className="reset">Reset</button>
           </div>
           <div className="filter-container">
               <h3 className="filter-text">My Posts</h3>
-            <input type="checkbox" className="filter" />
-          </div>
+            <input onChange={e => this.handleFilter(e.target.value)} type="checkbox" className="filter" />
+          </div>         
         </div>
+        <div className="posts-container">
+              posts
+          </div>
       </div>
     );
   }
