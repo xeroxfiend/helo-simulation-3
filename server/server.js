@@ -4,6 +4,7 @@ const express = require("express");
 const app = express();
 const session = require("express-session");
 const massive = require("massive");
+const ctrl = require('./controller')
 
 const {SERVER_PORT, SESSION_SERCRET, CONNECTION_STRING} = process.env;
 
@@ -22,6 +23,13 @@ app.use(
 
 //endpoints
 
+// app.get()
+
+// app.post()
+
+// app.put()
+
+// app.delete()
 
 
 massive(CONNECTION_STRING).then(db => {
