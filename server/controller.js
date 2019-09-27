@@ -16,8 +16,42 @@ module.exports = {
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
 
-    const newUserId = await db
-      .new_user({username, hash})
-      .catch(err => res.sendStatus(503));
+    await db.new_user({username, hash}).catch(err => res.sendStatus(503));
+
+    req.session.user = {
+      username
+    };
+
+    res.status(200).send({
+      message: "Successfully registered!",
+      user: req.session.user,
+      loggedIn: true
+    });
+  },
+
+  login: async (req, res) => {
+    const db = req.app.get("db");
+    const {username, password} = req.body;
+
+    const existingUserArray = await db.find_user(username);
+
+    if (!existingUserArray[0])
+      return res.status(200).send({message: "User not found!"});
+
+    const result = bcrypt.compareSync(password, existingUserArray[0].hash);
+
+    if (!result) return status(200).send({message: `Passwords don't match`});
+
+    req.session.user = {
+      username
+    };
+
+    res
+      .status(200)
+      .send({
+        message: "Successfully logged in!",
+        user: req.session.user,
+        loggedIn: true
+      });
   }
 };

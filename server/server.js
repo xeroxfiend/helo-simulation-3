@@ -6,7 +6,7 @@ const session = require("express-session");
 const massive = require("massive");
 const ctrl = require('./controller')
 
-const {SERVER_PORT, SESSION_SERCRET, CONNECTION_STRING} = process.env;
+const {SERVER_PORT, SESSION_SECRET, CONNECTION_STRING} = process.env;
 
 app.use(express.json());
 
@@ -14,7 +14,7 @@ app.use(
   session({
     resave: false,
     saveUninitialized: false,
-    secret: SESSION_SERCRET,
+    secret: SESSION_SECRET,
     cookie: {
       maxAge: 1000 * 60 * 60
     }
@@ -23,6 +23,8 @@ app.use(
 
 //endpoints
 app.post('/auth/register', ctrl.register)
+
+app.post('/auth/login', ctrl.login)
 
 // app.get()
 
