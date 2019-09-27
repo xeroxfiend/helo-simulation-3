@@ -40,7 +40,7 @@ module.exports = {
 
     const result = bcrypt.compareSync(password, existingUserArray[0].hash);
 
-    if (!result) return status(200).send({message: `Passwords don't match`});
+    if (!result) return res.status(200).send({message: 'Incorrect Username or Password'});
 
     req.session.user = {
       username
