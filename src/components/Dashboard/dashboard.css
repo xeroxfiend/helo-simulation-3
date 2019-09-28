@@ -12,9 +12,9 @@
     display: flex;
     align-items: center;
     justify-content: space-between;
-    width: 60%;
+    width: 75%;
     background: white;
-    box-shadow: 1px 1px 5px rgb(151, 150, 150);
+    box-shadow: 1px 1px 2px 1px rgba(151, 150, 150, 0.658);
     padding: 0 20px 0 20px;
     margin-bottom: 15px;
 }
@@ -39,7 +39,7 @@
     color: white;
     height: 23px;
     width: 50px;
-    box-shadow: 1px 1px 5px rgb(151, 150, 150);
+    box-shadow: 1px 1px 2px 1px rgba(151, 150, 150, 0.658);
 }
 
 .filter-container {
@@ -57,10 +57,26 @@
 
 .posts-container {
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: space-between;
-    width: 60%;
+    width: 75%;
     background: white;
-    box-shadow: 1px 1px 5px rgb(151, 150, 150);
-    padding: 0 20px 0 20px;
+    box-shadow: 1px 1px 2px 1px rgba(151, 150, 150, 0.658);
+    padding: 20px 20px 0 20px;
+}
+
+.post {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 1px 1px 2px 1px rgba(151, 150, 150, 0.658);
+    width: 95%;
+    height: auto;
+    margin: 0 0 20px 0;
+    padding: 10px;
+}
+
+.content {
+    font-weight: 400;
 }

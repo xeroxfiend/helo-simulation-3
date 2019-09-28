@@ -8,7 +8,7 @@ class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
-      search: "test",
+      search: "",
       userPosts: true,
       posts: []
     };
@@ -16,17 +16,23 @@ class Dashboard extends Component {
 
   componentDidMount() {
     this.getAllPosts();
-    console.log(this.state);
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if (prevState.userPosts !== this.state.userPosts) {
+      this.getAllPosts();
+    }
   }
 
   getAllPosts() {
-    axios.get(`/api/posts/${this.props.user_id}?userPosts=1`).then(res => {
-        console.log(res.data)
-      this.setState({
-        ...this.state,
-        posts: res.data
+    const userPosts = this.state.userPosts ? 1 : 0;
+    axios
+      .get(`/api/posts/${this.props.user_id}?userPosts=${userPosts}`)
+      .then(res => {
+        this.setState({
+          posts: res.data
+        });
       });
-    });
   }
 
   ///probably wrong
@@ -52,10 +58,18 @@ class Dashboard extends Component {
   }
 
   handleFilter(value) {
-    console.log(value);
+    this.setState({
+      userPosts: value
+    });
   }
 
   render() {
+    const mappedPost = this.state.posts.map((el, i) => (
+      <div data={el} key={i} className="post">
+        <h2 className="content">{el.content}</h2>
+        <h2 className="id">{el.user_id}</h2>
+      </div>
+    ));
     return (
       <div className="dashboard">
         <div className="search-container">
@@ -72,13 +86,14 @@ class Dashboard extends Component {
           <div className="filter-container">
             <h3 className="filter-text">My Posts</h3>
             <input
-              onChange={e => this.handleFilter(e.target.value)}
+              checked={this.state.userPosts}
+              onChange={e => this.handleFilter(e.target.checked)}
               type="checkbox"
               className="filter"
             />
           </div>
         </div>
-        <div className="posts-container">posts</div>
+        <div className="posts-container">{mappedPost}</div>
       </div>
     );
   }
