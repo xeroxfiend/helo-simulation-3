@@ -28,10 +28,12 @@
 
 .logo-image {
     height: 150px;
+    margin-bottom: -30px;
 }
 
 .logo-text {
     font-size: 4.5rem;
+    margin-bottom: 10px;
 }
 
 .input-container {
@@ -41,11 +43,13 @@
 }
 
 .username-input {
-    margin: 5px
+    margin: 5px;
+    height: 30px;
 }
 
 .password-input {
     margin: 5px;
+    height: 30px;
 }
 
 .login-buttons-container {
@@ -73,4 +77,21 @@
     width: 75px;
     margin: 30px;
     box-shadow: 1px 1px 5px rgb(151, 150, 150);
+}
+
+.username-container {
+    display: flex;
+    color: white;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.password-container {
+    display: flex;
+    color: white;
+    align-items: center;
+}
+
+.p {
+    margin-right: 5px;
 }

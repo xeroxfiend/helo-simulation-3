@@ -50,8 +50,8 @@ class Auth extends Component {
         password: this.state.password
       });
     } catch (err) {
-      if (err.response.status === 404) {
-        return swal.fire("User not found!");
+      if (err.response.status === 404 || err.response.status === 403) {
+        return swal.fire("Incorrect Username or Password");
       } else {
         return swal.fire("Unknown error!");
       }
@@ -76,18 +76,22 @@ class Auth extends Component {
             <h1 className="logo-text">Helo</h1>
           </div>
           <div className="input-container">
+            <div className="username-container">
+                <p className='u'>Username:</p>
             <input
               onChange={e => this.handleChange(e.target.value, "username")}
-              placeholder="Username"
               className="username-input"
               type="text"
             />
+            </div>
+            <div className="password-container">
+                <p className='p'>Password:</p>
             <input
               onChange={e => this.handleChange(e.target.value, "password")}
-              placeholder="Password"
               className="password-input"
               type="password"
             />
+            </div>
           </div>
           <div className="login-buttons-container">
             <button onClick={() => this.login()} className="login">

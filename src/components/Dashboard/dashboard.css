@@ -25,19 +25,20 @@
 }
 
 .search-bar {
-    height: 23px;
+    height: 30px;
     width: 30vw;
 }
 
 .search-button {
     background: #FF9770;
+    height: 30px;
 }
 
 .reset {
     border: none;
     background: #403D39;
     color: white;
-    height: 23px;
+    height: 30px;
     width: 50px;
     box-shadow: 1px 1px 2px 1px rgba(151, 150, 150, 0.658);
 }
@@ -71,7 +72,7 @@
     justify-content: space-between;
     align-items: center;
     box-shadow: 1px 1px 2px 1px rgba(151, 150, 150, 0.658);
-    width: 95%;
+    width: 99.7%;
     height: auto;
     margin: 0 0 20px 0;
     padding: 10px;
@@ -79,4 +80,9 @@
 
 .content {
     font-weight: 400;
+}
+
+.search-button:hover {
+    cursor: pointer;
+    opacity: 0.8;
 }
