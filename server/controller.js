@@ -58,5 +58,18 @@ module.exports = {
       user: req.session.user,
       loggedIn: true
     });
+  },
+
+  getPosts: (req, res) => {
+      const db = req.app.get('db')
+      const {id} = req.params
+      const {search} = req.query
+      const {userPosts} = req.body
+
+      if (userPosts && !search)
+
+
+
+      
   }
 };
