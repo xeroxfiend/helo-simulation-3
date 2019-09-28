@@ -6,6 +6,8 @@
     width: 120px;
     background: linear-gradient( #FF9770, #FF70A6);
     box-shadow: 3px 3px 10px rgb(128, 109, 109);
+    z-index: 1;
+    position: relative;
 }
 
 .user-image {

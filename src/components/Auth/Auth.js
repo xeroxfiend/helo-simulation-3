@@ -43,11 +43,20 @@ class Auth extends Component {
   async login() {
     if (!this.state.username || !this.state.password)
       return swal.fire("Username and Password cannot be blank");
+    let res;
+    try {
+      res = await axios.post("/auth/login", {
+        username: this.state.username,
+        password: this.state.password
+      });
+    } catch (err) {
+      if (err.response.status === 404) {
+        return swal.fire("User not found!");
+      } else {
+        return swal.fire("Unknown error!");
+      }
+    }
 
-    const res = await axios.post("/auth/login", {
-      username: this.state.username,
-      password: this.state.password
-    });
     this.props.updateState(
       res.data.user.userId,
       this.state.username,

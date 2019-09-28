@@ -14,9 +14,9 @@
     border-radius: 10px;
     min-width: 300px;
     width: 30%;
-    height: 500px;
+    height: 530px;
     justify-content: center;
-    background: linear-gradient(100deg, #FF9770, #FFD760)
+    background: linear-gradient(100deg, #FF9770, #FFD760);
 }
 
 .logo {
@@ -31,7 +31,7 @@
 }
 
 .logo-text {
-    font-size: 5rem;
+    font-size: 4.5rem;
 }
 
 .input-container {
@@ -40,16 +40,13 @@
     align-items: center;
 }
 
+.username-input {
+    margin: 5px
+}
 
-/* 
-/* .username-input::before {
-    content: 'Username:';
-} */
-
-
-/* .password-input::before {
-    content: 'Password: ';
-} */
+.password-input {
+    margin: 5px;
+}
 
 .login-buttons-container {
     display: flex;
@@ -63,6 +60,8 @@
     margin-right: 30px;
     height: 30px;
     width: 75px;
+    margin: 30px;
+    box-shadow: 1px 1px 5px rgb(151, 150, 150);
 }
 
 .register {
@@ -72,4 +71,6 @@
     margin-left: 30px;
     height: 30px;
     width: 75px;
+    margin: 30px;
+    box-shadow: 1px 1px 5px rgb(151, 150, 150);
 }

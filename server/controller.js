@@ -40,7 +40,7 @@ module.exports = {
     const existingUserArray = await db.find_user(username);
 
     if (!existingUserArray[0])
-      return res.status(200).send({message: "User not found!"});
+      return res.sendStatus(404);
 
     const result = bcrypt.compareSync(password, existingUserArray[0].hash);
 
@@ -72,8 +72,20 @@ module.exports = {
       });
     }
 
+    if (!userPosts && !search) {
+        return db.get_all_no_user(user_id).then(result => {
+            res.status(200).send(result)
+        })
+    }
+
+    if (!userPosts && search) {
+        db.something()
+    }
+
     if (userPosts && !search) {
-      db.get_all_by_title();
+      db.get_all().then(result => {
+          res.status(200).send(result)
+      })
     }
   }
 };
