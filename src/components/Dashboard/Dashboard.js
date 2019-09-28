@@ -20,11 +20,11 @@ class Dashboard extends Component {
 
   ///probably wrong
 
-  getPosts(id) {
+  getPosts(user_id) {
     axios
-      .get(`/api/posts/${id}?search=${this.state.search}`, {
-        userPosts: this.state.userPosts
-      })
+      .get(
+        `/api/posts/${user_id}?search=${this.state.search}&userPosts=${this.state.userPosts}`
+      )
       .then(res => {
         this.setState({
           posts: res.data

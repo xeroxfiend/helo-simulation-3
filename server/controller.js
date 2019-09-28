@@ -61,15 +61,19 @@ module.exports = {
   },
 
   getPosts: (req, res) => {
-      const db = req.app.get('db')
-      const {id} = req.params
-      const {search} = req.query
-      const {userPosts} = req.body
+    const db = req.app.get("db");
+    const {user_id} = req.params;
+    const {search} = req.query;
+    const userPosts = parseInt(req.query.userPosts);
 
-      if (userPosts && !search)
+    if (userPosts && search) {
+      return db.get_all_by_title(`%${search}%`).then(result => {
+        res.status(200).send(result);
+      });
+    }
 
-
-
-      
+    if (userPosts && !search) {
+      db.get_all_by_title();
+    }
   }
 };
