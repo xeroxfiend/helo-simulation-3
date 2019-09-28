@@ -8,14 +8,25 @@ class Dashboard extends Component {
   constructor() {
     super();
     this.state = {
-      search: "",
+      search: "test",
       userPosts: true,
       posts: []
     };
   }
 
   componentDidMount() {
-    // axios.get();
+    this.getAllPosts();
+    console.log(this.state);
+  }
+
+  getAllPosts() {
+    axios.get(`/api/posts/${this.props.user_id}?userPosts=1`).then(res => {
+        console.log(res.data)
+      this.setState({
+        ...this.state,
+        posts: res.data
+      });
+    });
   }
 
   ///probably wrong
