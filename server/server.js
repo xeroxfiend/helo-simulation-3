@@ -28,6 +28,8 @@ app.post('/auth/login', ctrl.login)
 
 app.get('/api/posts/:user_id', ctrl.getPosts) 
 
+app.get('/api/post/:post_id', ctrl.getPosts) 
+
 
 // app.put()
 

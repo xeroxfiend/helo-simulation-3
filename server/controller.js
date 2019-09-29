@@ -89,5 +89,12 @@ module.exports = {
         res.status(200).send(result);
       });
     }
+  },
+
+  getPost: (req, res) => {
+    const {post_id} = req.params
+    db.get_post(post_id).then(result => {
+      res.status(200).send(result)
+    })
   }
 };

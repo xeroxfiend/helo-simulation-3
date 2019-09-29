@@ -99,7 +99,7 @@ class Dashboard extends Component {
             <input
               value={this.state.search}
               onChange={e => this.handleChange(e.target.value)}
-              placeholder="Search by Title"
+              placeholder="Filter by Title"
               className="search-bar"
               type="text"
             />
