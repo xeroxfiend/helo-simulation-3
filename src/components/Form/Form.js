@@ -1,6 +1,8 @@
 import React, {Component} from 'react'
 import './form.css'
 import imageDefault from '../../assets/imageDefault.JPG'
+import {connect} from 'react-redux'
+import axios from 'axios'
 
 class Form extends Component {
     constructor() {
@@ -15,6 +17,16 @@ class Form extends Component {
     handleChange(value, key) {
         this.setState({
             [key]: value
+        })
+    }
+
+    handleSubmit() {
+        axios.post(`/api/post/${this.props.user_id}`, {
+            title: this.state.title,
+            url: this.state.url,
+            content: this.state.content
+        }).then(() => {
+            this.props.history.push('/dashboard')
         })
     }
 
@@ -42,7 +54,7 @@ class Form extends Component {
                     </div>
                     <div className="post-button-container">
                         <div className="invisible2"></div>
-                        <button className="post-button">Post</button>
+                        <button onClick={() => this.handleSubmit()} className="post-button">Post</button>
                     </div>
                 </div>
             </div>
@@ -50,5 +62,9 @@ class Form extends Component {
     }
 }
 
+function mapStateToProps(reduxState) {
+    const {user_id} = reduxState
+    return {user_id}
+}
 
-export default Form
+export default connect(mapStateToProps)(Form)

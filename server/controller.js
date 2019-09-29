@@ -92,9 +92,21 @@ module.exports = {
   },
 
   getPost: (req, res) => {
-    const {post_id} = req.params
+    const db = req.app.get("db");
+    const {post_id} = req.params;
+
     db.get_post(post_id).then(result => {
-      res.status(200).send(result)
-    })
+      res.status(200).send(result);
+    });
+  },
+
+  addNewPost: (req, res) => {
+    const db = req.app.get("db");
+    const {user_id} = req.params;
+    const {title, url, content} = req.body;
+
+    db.add_new_post({user_id, title, image: url, content}).then(result => {
+      res.status(200).send(result);
+    });
   }
 };

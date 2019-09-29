@@ -28,7 +28,9 @@ app.post('/auth/login', ctrl.login)
 
 app.get('/api/posts/:user_id', ctrl.getPosts) 
 
-app.get('/api/post/:post_id', ctrl.getPosts) 
+// app.get('/api/post/:post_id', ctrl.getPost)
+
+app.post('/api/post/:user_id', ctrl.addNewPost) 
 
 
 // app.put()
