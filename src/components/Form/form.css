@@ -46,11 +46,13 @@
 }
 
 .title-text {
+    margin-top: 0;
     margin-bottom: 0;
     margin-left: -80%;
 }
 
 .url-text {
+    margin-top: 10px;
     margin-bottom: 0;
     margin-left: -76%;
 }
@@ -62,6 +64,7 @@
 
 .title-input {
     width: 95%;
+    margin-bottom: 30px;
 }
 
 .url-input {
@@ -71,4 +74,35 @@
 .content-input {
     width: 95%;
     height: 70px;
+}
+
+.form-image {
+    max-width: 400px;
+    border-radius: 10px;
+    box-shadow: 1px 1px 2px 1px rgba(151, 150, 150, 0.658);
+    min-width: 400px;
+    min-height: 250px;
+}
+
+.new-post-container {
+    display: flex;
+    justify-content: space-between;
+    width: 100%
+}
+
+.post-button-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 93%
+}
+
+.post {
+    border: none;
+    background: #403D39;
+    color: white;
+    height: 30px;
+    width: 50px;
+    box-shadow: 1px 1px 2px 1px rgba(151, 150, 150, 0.658);
+    padding-bottom: 24px;
 }
