@@ -87,8 +87,8 @@ class Dashboard extends Component {
 
   render(props) {
     const mappedPost = this.state.posts.map((el, i) => (
-      <Link className='post' to={`/post/${el.post_id}`}>
-        <div data={el} key={i}className='overall-post-container'>
+      <Link key={i} className='post' to={`/post/${el.post_id}`}>
+        <div data={el} className='overall-post-container'>
           <h2 className="title">{el.title}</h2>
           <div className="user">
             <h4 className="post-user-name">by {el.name}</h4>
