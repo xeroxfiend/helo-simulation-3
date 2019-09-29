@@ -96,6 +96,8 @@
     margin: 10px;
     border-radius: 50%;
     height: 50px;
+    width: 50px;
+    box-shadow: 0 0 7px rgb(44, 44, 44);
 }
 
 .post-user-name {

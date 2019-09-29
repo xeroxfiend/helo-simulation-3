@@ -1,3 +1,20 @@
 .form {
+    width: 100%;
     background: #F2F2F2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 75%;
+    background: white;
+    box-shadow: 1px 1px 2px 1px rgba(151, 150, 150, 0.658);
+    padding: 20px 20px 0 20px;
+}
+
+.new-post {}

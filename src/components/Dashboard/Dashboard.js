@@ -38,17 +38,17 @@ class Dashboard extends Component {
 
   ///probably wrong
 
-  getPosts(user_id) {
-    axios
-      .get(
-        `/api/posts/${user_id}?search=${this.state.search}&userPosts=${this.state.userPosts}`
-      )
-      .then(res => {
-        this.setState({
-          posts: res.data
-        });
-      });
-  }
+//   getPosts(user_id) {
+//     axios
+//       .get(
+//         `/api/posts/${user_id}?search=${this.state.search}&userPosts=${this.state.userPosts}`
+//       )
+//       .then(res => {
+//         this.setState({
+//           posts: res.data
+//         });
+//       });
+//   }
 
   ///
 
@@ -67,7 +67,7 @@ class Dashboard extends Component {
   render() {
     const mappedPost = this.state.posts.map((el, i) => (
       <div data={el} key={i} className="post">
-        <h2 className="content">{el.content}</h2>
+        <h2 className="title">{el.title}</h2>
         <div className="user">
           <h4 className="post-user-name">by {el.name}</h4>
           <img src={el.pic} alt="user" className="post-user-image" />
