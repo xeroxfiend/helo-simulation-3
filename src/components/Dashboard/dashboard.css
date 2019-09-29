@@ -86,3 +86,19 @@
     cursor: pointer;
     opacity: 0.8;
 }
+
+.user {
+    display: flex;
+    align-items: center;
+}
+
+.post-user-image {
+    margin: 10px;
+    border-radius: 50%;
+    height: 50px;
+}
+
+.post-user-name {
+    margin: 10px;
+    font-weight: 400;
+}

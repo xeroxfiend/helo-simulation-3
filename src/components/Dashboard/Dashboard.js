@@ -16,6 +16,7 @@ class Dashboard extends Component {
 
   componentDidMount() {
     this.getAllPosts();
+    console.log(this.props.user_id)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -67,7 +68,10 @@ class Dashboard extends Component {
     const mappedPost = this.state.posts.map((el, i) => (
       <div data={el} key={i} className="post">
         <h2 className="content">{el.content}</h2>
-        <h2 className="id">{el.user_id}</h2>
+        <div className="user">
+          <h4 className="post-user-name">by {el.name}</h4>
+          <img src={el.pic} alt="user" className="post-user-image" />
+        </div>
       </div>
     ));
     return (

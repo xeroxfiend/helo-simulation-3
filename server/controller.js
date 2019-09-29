@@ -17,7 +17,7 @@ module.exports = {
     const hash = bcrypt.hashSync(password, salt);
 
     const newUserArray = await db
-      .new_user({username, hash})
+      .new_user({username, pic: `https://robohash.org/${username}?set=set5`, hash})
       .catch(err => res.sendStatus(503));
 
     req.session.user = {
