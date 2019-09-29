@@ -8,16 +8,18 @@ module.exports = {
     const existingUserArray = await db.find_user(username);
 
     if (existingUserArray[0]) {
-      return res
-        .status(200)
-        .send({message: "username already exists", loggedIn: false});
+      return res.sendStatus(404);
     }
 
     const salt = bcrypt.genSaltSync(10);
     const hash = bcrypt.hashSync(password, salt);
 
     const newUserArray = await db
-      .new_user({username, pic: `https://robohash.org/${username}?set=set5`, hash})
+      .new_user({
+        username,
+        pic: `https://robohash.org/${username}?set=set5`,
+        hash
+      })
       .catch(err => res.sendStatus(503));
 
     req.session.user = {
@@ -43,8 +45,7 @@ module.exports = {
 
     const result = bcrypt.compareSync(password, existingUserArray[0].hash);
 
-    if (!result)
-      return res.sendStatus(403)
+    if (!result) return res.sendStatus(403);
 
     req.session.user = {
       username,

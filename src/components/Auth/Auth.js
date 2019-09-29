@@ -37,6 +37,10 @@ class Auth extends Component {
           `https://robohash.org/${this.state.username}?set=set5`
         );
         this.props.history.push("/dashboard");
+      })
+      .catch(err => {
+        if (err.response.status === 404)
+          return swal.fire("User already exists");
       });
   }
 
@@ -77,20 +81,20 @@ class Auth extends Component {
           </div>
           <div className="input-container">
             <div className="username-container">
-                <p className='u'>Username:</p>
-            <input
-              onChange={e => this.handleChange(e.target.value, "username")}
-              className="username-input"
-              type="text"
-            />
+              <p className="u">Username:</p>
+              <input
+                onChange={e => this.handleChange(e.target.value, "username")}
+                className="username-input"
+                type="text"
+              />
             </div>
             <div className="password-container">
-                <p className='p'>Password:</p>
-            <input
-              onChange={e => this.handleChange(e.target.value, "password")}
-              className="password-input"
-              type="password"
-            />
+              <p className="p">Password:</p>
+              <input
+                onChange={e => this.handleChange(e.target.value, "password")}
+                className="password-input"
+                type="password"
+              />
             </div>
           </div>
           <div className="login-buttons-container">
