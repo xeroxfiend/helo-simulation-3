@@ -42,7 +42,7 @@ class Form extends Component {
                     </div>
                     <div className="post-button-container">
                         <div className="invisible2"></div>
-                        <button className="post">Post</button>
+                        <button className="post-button">Post</button>
                     </div>
                 </div>
             </div>

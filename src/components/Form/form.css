@@ -97,12 +97,12 @@
     width: 93%
 }
 
-.post {
+.post-button {
     border: none;
     background: #403D39;
     color: white;
     height: 30px;
     width: 50px;
     box-shadow: 1px 1px 2px 1px rgba(151, 150, 150, 0.658);
-    padding-bottom: 24px;
+    margin-bottom: 30px;
 }

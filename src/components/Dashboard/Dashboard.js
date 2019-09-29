@@ -1,6 +1,6 @@
 import React, {Component} from "react";
 import "./dashboard.css";
-import searchButton from "../../assets/searchbutton.png";
+import searchButton from "../../assets/searchicon.png";
 import axios from "axios";
 import {connect} from "react-redux";
 
@@ -16,7 +16,6 @@ class Dashboard extends Component {
 
   componentDidMount() {
     this.getAllPosts();
-    console.log(this.props.user_id)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -38,30 +37,49 @@ class Dashboard extends Component {
 
   ///probably wrong
 
-//   getPosts(user_id) {
-//     axios
-//       .get(
-//         `/api/posts/${user_id}?search=${this.state.search}&userPosts=${this.state.userPosts}`
-//       )
-//       .then(res => {
-//         this.setState({
-//           posts: res.data
-//         });
-//       });
-//   }
+  //   getPosts(user_id) {
+  //     axios
+  //       .get(
+  //         `/api/posts/${user_id}?search=${this.state.search}&userPosts=${this.state.userPosts}`
+  //       )
+  //       .then(res => {
+  //         this.setState({
+  //           posts: res.data
+  //         });
+  //       });
+  //   }
 
   ///
 
   handleChange(value) {
     this.setState({
       search: value
-    });
+    })
+    this.handleSearch()
   }
 
   handleFilter(value) {
     this.setState({
       userPosts: value
     });
+  }
+
+  handleReset() {
+    this.getAllPosts();
+    this.setState({
+      search: ""
+    });
+  }
+
+  handleSearch() {
+    const userPosts = this.state.userPosts ? 1 : 0;
+    axios.get(
+      `/api/posts/${this.props.user_id}?userPosts=${userPosts}&search=${this.state.search}`
+    ).then( res => {
+        this.setState({
+            posts: res.data
+        })
+    })
   }
 
   render() {
@@ -79,13 +97,21 @@ class Dashboard extends Component {
         <div className="search-container">
           <div className="input-and-buttons">
             <input
+              value={this.state.search}
               onChange={e => this.handleChange(e.target.value)}
               placeholder="Search by Title"
               className="search-bar"
               type="text"
             />
-            <img src={searchButton} alt="search" className="search-button" />
-            <button className="reset">Reset</button>
+            <img
+              onClick={() => this.handleSearch()}
+              src={searchButton}
+              alt="search"
+              className="search-button"
+            />
+            <button onClick={() => this.handleReset()} className="reset">
+              Reset
+            </button>
           </div>
           <div className="filter-container">
             <h3 className="filter-text">My Posts</h3>

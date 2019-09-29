@@ -30,8 +30,8 @@
 }
 
 .search-button {
-    background: #FF9770;
     height: 30px;
+    margin: 0 5px 0 5px;
 }
 
 .reset {
@@ -41,6 +41,7 @@
     height: 30px;
     width: 50px;
     box-shadow: 1px 1px 2px 1px rgba(151, 150, 150, 0.658);
+    margin-left: 5px;
 }
 
 .filter-container {
