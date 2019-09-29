@@ -1,11 +1,10 @@
 import React, {Component} from 'react'
 import './post.css'
 import axios from 'axios'
-import {withRouter} from 'react-router-dom'
 
 class Post extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
             title: '',
             url: '',
@@ -16,8 +15,16 @@ class Post extends Component {
     }
 
     componentDidMount() {
-        console.log(this.props.match.params.id)
-        // axios.get(`/api/post/${this.props.match.id}`)
+        axios.get(`/api/post/${this.props.match.id}`).then(result => {
+            console.log(result)
+            // this.setState({
+            //     title: result.data.title,
+            //     url: result.data.url,
+            //     content: result.data.content,
+            //     pic: result.data.pic,
+            //     username: result.data.username
+            // })
+        })
     }
 
 
@@ -52,4 +59,4 @@ class Post extends Component {
     }
 }
 
-export default withRouter(Post)
+export default Post
