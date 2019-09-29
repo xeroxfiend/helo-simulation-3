@@ -60,12 +60,14 @@
 .posts-container {
     display: flex;
     flex-direction: column;
+    scroll-behavior: auto;
     align-items: center;
     justify-content: space-between;
     width: 75%;
     background: white;
     box-shadow: 1px 1px 2px 1px rgba(151, 150, 150, 0.658);
     padding: 20px 20px 0 20px;
+    overflow: auto;
 }
 
 .post {
@@ -77,6 +79,14 @@
     height: auto;
     margin: 0 0 20px 0;
     padding: 10px;
+    text-decoration: none;
+    color: black;
+}
+
+.overall-post-container {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
 }
 
 .content {
@@ -102,6 +112,39 @@
 }
 
 .post-user-name {
-    margin: 10px;
+    display: flex;
+    flex-direction: column;
+    margin: 10px 3px 10px 10px;
     font-weight: 400;
+}
+
+.dashboard::-webkit-scrollbar {
+    width: 10px;
+    background: lightgrey;
+    height: 50px;
+}
+
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+
+/* Track */
+
+::-webkit-scrollbar-track {
+    background: #f1f1f1;
+}
+
+
+/* Handle */
+
+::-webkit-scrollbar-thumb {
+    background: #888;
+}
+
+
+/* Handle on hover */
+
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(102, 101, 101);
 }

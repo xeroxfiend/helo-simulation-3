@@ -3,6 +3,7 @@ import "./dashboard.css";
 import searchButton from "../../assets/searchicon.png";
 import axios from "axios";
 import {connect} from "react-redux";
+import {Link} from "react-router-dom";
 
 class Dashboard extends Component {
   constructor() {
@@ -54,8 +55,8 @@ class Dashboard extends Component {
   handleChange(value) {
     this.setState({
       search: value
-    })
-    this.handleSearch()
+    });
+    this.handleSearch();
   }
 
   handleFilter(value) {
@@ -73,24 +74,28 @@ class Dashboard extends Component {
 
   handleSearch() {
     const userPosts = this.state.userPosts ? 1 : 0;
-    axios.get(
-      `/api/posts/${this.props.user_id}?userPosts=${userPosts}&search=${this.state.search}`
-    ).then( res => {
+    axios
+      .get(
+        `/api/posts/${this.props.user_id}?userPosts=${userPosts}&search=${this.state.search}`
+      )
+      .then(res => {
         this.setState({
-            posts: res.data
-        })
-    })
+          posts: res.data
+        });
+      });
   }
 
   render() {
     const mappedPost = this.state.posts.map((el, i) => (
-      <div data={el} key={i} className="post">
-        <h2 className="title">{el.title}</h2>
-        <div className="user">
-          <h4 className="post-user-name">by {el.name}</h4>
-          <img src={el.pic} alt="user" className="post-user-image" />
+      <Link className='post' to={`/post/${el.post_id}`}>
+        <div data={el} key={i}className='overall-post-container'>
+          <h2 className="title">{el.title}</h2>
+          <div className="user">
+            <h4 className="post-user-name">by {el.name}</h4>
+            <img src={el.pic} alt="user" className="post-user-image" />
+          </div>
         </div>
-      </div>
+      </Link>
     ));
     return (
       <div className="dashboard">
