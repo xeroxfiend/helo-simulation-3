@@ -56,7 +56,7 @@ class Dashboard extends Component {
     this.setState({
       search: value
     });
-    this.handleSearch();
+    // this.handleSearch();
   }
 
   handleFilter(value) {
@@ -85,10 +85,10 @@ class Dashboard extends Component {
       });
   }
 
-  render(props) {
+  render() {
     const mappedPost = this.state.posts.map((el, i) => (
       <Link key={i} className='post' to={`/post/${el.post_id}`}>
-        <div data={el} className='overall-post-container'>
+        <div className='overall-post-container'>
           <h2 className="title">{el.title}</h2>
           <div className="user">
             <h4 className="post-user-name">by {el.name}</h4>
@@ -104,7 +104,7 @@ class Dashboard extends Component {
             <input
               value={this.state.search}
               onChange={e => this.handleChange(e.target.value)}
-              placeholder="Filter by Title"
+              placeholder="Search by Title"
               className="search-bar"
               type="text"
             />

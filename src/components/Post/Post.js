@@ -7,23 +7,23 @@ class Post extends Component {
     super(props);
     this.state = {
       title: "",
-      url: "",
+      image: "",
       content: "",
       pic: "",
-      username: ""
+      name: ""
     };
   }
 
   componentDidMount() {
-    axios.get(`/api/post/${this.props.match.id}`).then(result => {
-      console.log(result);
-      // this.setState({
-      //     title: result.data.title,
-      //     url: result.data.url,
-      //     content: result.data.content,
-      //     pic: result.data.pic,
-      //     username: result.data.username
-      // })
+    axios.get(`/api/post/${this.props.match.params.postid}`).then(result => {
+      this.setState({
+        title: result.data[0].title,
+        url: result.data[0].url,
+        content: result.data[0].content,
+        image: result.data[0].image,
+        name: result.data[0].name,
+        pic: result.data[0].pic
+      });
     });
   }
 
@@ -31,11 +31,21 @@ class Post extends Component {
     return (
       <div className="post-details">
         <div className="post-detail-container">
-          <div className="new-post-container">
-            <h1 className="post-detail-title">{this.state.title}</h1>
-            <div className="invisible"></div>
+            <div className="head">
+          <h1 className="post-detail-title">{this.state.title}</h1>
+          <div className="user-stuff">
+            <h3 className="user-head">by {this.state.name}</h3>
+            <img
+              className="post-pic-detail"
+              src={this.state.pic}
+              alt="post"
+            />
+            </div>
           </div>
-          <img src={this.state.url} alt="default" className="form-image" />
+          <div className="main-post">
+          <img src={this.state.image} alt="post" className="post-image-detail"/>
+          <h2 className="content-post">{this.state.content}</h2>
+          </div>
         </div>
       </div>
     );
