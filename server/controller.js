@@ -60,13 +60,15 @@ module.exports = {
     });
   },
 
-  logout: req => {
-    req.session.destroy
+  logout: (req, res) => {
+    req.session.destroy()
+    res.status(200).send('logged out!')
   },
 
   getUserData: (req, res) => {
     const db = req.app.get('db')
 
+    console.log(req.session.user.username)
     db.find_user(req.session.user.username).then(result => {
       res.status(200).send(result)
     })
@@ -74,7 +76,7 @@ module.exports = {
 
   getPosts: (req, res) => {
     const db = req.app.get("db");
-    const {user_id} = req.params;
+    const {user_id} = req.session.user;
     const {search} = req.query;
     const userPosts = parseInt(req.query.userPosts);
 

@@ -20,6 +20,9 @@ class Dashboard extends Component {
   }
 
   componentDidUpdate(prevProps, prevState) {
+    if (prevProps.user_id !== this.props.user_id) {
+      this.getAllPosts()
+    }
     if (prevState.userPosts !== this.state.userPosts) {
       this.getAllPosts();
     }
@@ -30,6 +33,7 @@ class Dashboard extends Component {
     axios
       .get(`/api/posts/${this.props.user_id}?userPosts=${userPosts}`)
       .then(res => {
+        console.log(res.data)
         this.setState({
           posts: res.data
         });
