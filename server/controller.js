@@ -60,6 +60,18 @@ module.exports = {
     });
   },
 
+  logout: req => {
+    req.session.destroy
+  },
+
+  getUserData: (req, res) => {
+    const db = req.app.get('db')
+
+    db.find_user(req.session.user.username).then(result => {
+      res.status(200).send(result)
+    })
+  },
+
   getPosts: (req, res) => {
     const db = req.app.get("db");
     const {user_id} = req.params;

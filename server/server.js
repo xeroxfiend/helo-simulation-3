@@ -26,17 +26,18 @@ app.post('/auth/register', ctrl.register)
 
 app.post('/auth/login', ctrl.login)
 
+app.delete('/auth/logout', ctrl.logout)
+
 app.get('/api/posts/:user_id', ctrl.getPosts) 
 
 app.get('/api/post/:post_id', ctrl.getPost)
 
 app.post('/api/post/:user_id', ctrl.addNewPost) 
 
+app.get('/auth/me', ctrl.getUserData)
+
 
 // app.put()
-
-// app.delete()
-
 
 massive(CONNECTION_STRING).then(db => {
   app.set("db", db);

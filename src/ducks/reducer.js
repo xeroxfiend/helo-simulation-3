@@ -4,7 +4,7 @@ const initialState = {
   pic: ""
 };
 
-const UPDATE_STATE = "UPDATE_STATE";
+export const UPDATE_STATE = "UPDATE_STATE";
 
 export function updateState(user_id, username, pic) {
   return {
