@@ -20,7 +20,6 @@ class Nav extends Component {
   }
 
   getUserData() {
-    console.log('ladder')
     axios.get("/auth/me").then(res => {
       const {name, user_id, pic} = res.data[0];
       this.props.updateState(user_id, name, pic);

@@ -33,7 +33,6 @@ class Dashboard extends Component {
     axios
       .get(`/api/posts/${this.props.user_id}?userPosts=${userPosts}`)
       .then(res => {
-        console.log(res.data)
         this.setState({
           posts: res.data
         });
